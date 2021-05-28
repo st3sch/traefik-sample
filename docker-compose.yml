@@ -14,5 +14,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  howto:
+    image: docker/getting-started
+    networks:
+      - proxy
+    labels:
+      - "traefik.http.routers.howto.rule=Host(`howto.docker.localhost`)"
 networks:
   proxy:
