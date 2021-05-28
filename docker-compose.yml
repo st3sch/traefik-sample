@@ -9,6 +9,8 @@ services:
     command:
       - --api.dashboard=true
       - --providers.docker
+      - --providers.docker.exposedByDefault=false
+      - --providers.docker.network=proxy
     networks:
       - proxy
     ports:
@@ -16,6 +18,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
+      - "traefik.enable=true" 
       - "traefik.http.routers.traefik.rule=Host(`traefik.docker.localhost`)"
       - "traefik.http.routers.traefik.service=api@internal"
 
@@ -24,6 +27,7 @@ services:
     networks:
       - proxy
     labels:
+      - "traefik.enable=true" 
       - "traefik.http.routers.howto.rule=Host(`howto.docker.localhost`)"
 
   whoami:
@@ -31,6 +35,7 @@ services:
     networks:
       - proxy
     labels:
+      - "traefik.enable=true" 
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
 
 networks:
