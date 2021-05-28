@@ -5,7 +5,10 @@ services:
     image: traefik:latest
     container_name: traefik
     restart: unless-stopped
-    command: --api.insecure=true --providers.docker
+    command: [
+      --api.insecure=true,
+      --providers.docker
+    ]
     networks:
       - proxy
     ports:
