@@ -16,8 +16,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard.docker.localhost`)"
-      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.docker.localhost`)"
+      - "traefik.http.routers.traefik.service=api@internal"
 
   howto:
     image: docker/getting-started
