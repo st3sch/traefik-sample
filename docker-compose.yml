@@ -26,5 +26,12 @@ services:
     labels:
       - "traefik.http.routers.howto.rule=Host(`howto.docker.localhost`)"
 
+  whoami:
+    image: traefik/whoami 
+    networks:
+      - proxy
+    labels:
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+
 networks:
   proxy:
