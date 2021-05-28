@@ -1,15 +1,14 @@
 version: '3.7'
 
 services:
+
   traefik:
     image: traefik:latest
     container_name: traefik
     restart: unless-stopped
     command:
       - --api.dashboard=true
-      - --api.debug=true
       - --providers.docker
-      - --entrypoints.web.address=:80
     networks:
       - proxy
     ports:
@@ -26,5 +25,6 @@ services:
       - proxy
     labels:
       - "traefik.http.routers.howto.rule=Host(`howto.docker.localhost`)"
+
 networks:
   proxy:
